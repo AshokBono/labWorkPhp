@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
             if ($password === $cpassword) {
                 $insertQuery = "INSERT INTO register(USERNAME, EMAIL, CONTACT, PASSWORD, C_PASSWORD) VALUES ('$username', '$email', '$contact', '$pass', '$cpass')";
                 $query = mysqli_query($conn, $insertQuery);
+                header('location:login.php');
                 echo "Successfully registered";
             } else {
                 echo "Password did not match";
@@ -51,24 +52,29 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
+    <link rel="stylesheet" href="index.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
+    <div class="container">
+
         <div class="register-container">
-            <label for="usernameId">UserName: </label>
-            <input type="text" id="usernameId" name="username" required>
-            <label for="emailId">Email: </label>
-            <input type="email" id="emailId" name="email" required>
-            <label for="contactId">Contact: </label>
-            <input type="text" id="contactId" name="contact" required>
-            <label for="passwordId">Password: </label>
-            <input type="password" id="passwordId" name="password" required>
-            <label for="cpasswordId">Confirm Password: </label>
-            <input type="password" id="cpasswordId" name="cpassword" required>
+            <p class="header">Register</p>
+        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
+            <input type="text" id="usernameId" name="username" placeholder="Username" required>
+            <input type="email" id="emailId" name="email" placeholder="Email" required>
+            <input type="text" id="contactId" name="contact" placeholder="Contact" required>
+            <input type="password" id="passwordId" name="password" placeholder="Password" required>
+            <input type="password" id="cpasswordId" name="cpassword" placeholder="Confirm Password" required>
             <button type="submit" name="submit">Submit</button>
-        </div>
-    </form>
+        </form>
+        
+    </div>
+</div>
 
 </body>
 

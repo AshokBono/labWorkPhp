@@ -17,7 +17,6 @@ if (isset($_POST['submit'])) {
         $dbPass = $emailPass["PASSWORD"];
         $passDecode = password_verify($password, $dbPass);
         $_SESSION['username'] = $emailPass["USERNAME"];
-        echo $_SESSION['username'];
 
         if ($passDecode) {
             header('location:home.php');
@@ -37,19 +36,22 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="login-container">
-
-        <form action="" method="POST">
-            <h3>Login</h3>
-            <label for="emailId">Email: </label>
-            <input type="email" id="emailId" name="email" required placeholder="example@exp.com">
-            <label for="passwordId">Password: </label>
-            <input type="password" id="passwordId" name="password" required>
-            <input type="submit" name="submit">
-        </form>
+    <div class="container">
+        <div class="login-container">
+            <p>Login</p>
+            <form action="" method="POST">
+                <input type="email" id="emailId" name="email" required placeholder="Email">
+                <input type="password" id="passwordId" name="password" placeholder="*********" required>
+                <button type="submit" name="submit">Submit</button>
+            </form>
+        </div>
     </div>
 </body>
 
